@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI前沿资源导航</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: var(--bg-color);
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background: #e0e0e0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-button.active {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .card {
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.8em;
+            padding: 2px 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 AI前沿资源导航</h1>
+        
+        <!-- 导航栏 -->
+        <div class="nav">
+            <button class="nav-button active" onclick="filter('all')">全部</button>
+            <button class="nav-button" onclick="filter('academic')">学术</button>
+            <button class="nav-button" onclick="filter('industry')">行业</button>
+            <button class="nav-button" onclick="filter('community')">社区</button>
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="section academic">
+            <h2>📚 学术资源</h2>
+            <div class="links">
+                <div class="card">
+                    <a href="https://arxiv.org/" target="_blank">arXiv 
+                        <span class="tag">论文预印本</span></a>
+                    <p>每日更新最新AI论文，涵盖ML/CV/NLP等领域</p>
+                </div>
+                <!-- 更多学术资源... -->
+            </div>
+        </div>
+
+        <div class="section industry">
+            <h2>💼 行业动态</h2>
+            <div class="links">
+                <div class="card">
+                    <a href="https://openai.com/blog" target="_blank">OpenAI Blog 
+                        <span class="tag">技术博客</span></a>
+                    <p>GPT系列、DALL·E等最新进展</p>
+                </div>
+                <!-- 更多行业资源... -->
+            </div>
+        </div>
+
+        <div class="section community">
+            <h2>🌐 社区与开源</h2>
+            <div class="links">
+                <div class="card">
+                    <a href="https://github.com/" target="_blank">GitHub 
+                        <span class="tag">开源代码</span></a>
+                    <p>关注PyTorch、Hugging Face等热门仓库</p>
+                </div>
+                <!-- 更多社区资源... -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 分类过滤功能
+        function filter(category) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = (category === 'all' || section.classList.contains(category)) 
+                    ? 'block' : 'none';
+            });
+
+            // 更新按钮状态
+            document.querySelectorAll('.nav-button').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.toLowerCase() === category);
+            });
+        }
+    </script>
+</body>
+</html>
